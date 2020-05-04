@@ -7,15 +7,35 @@ tempo = 100
 beat = int(tempo/3.7)
 tempBeat = (60.0/tempo)
 
-stored_values = {	'fixture': 0,
-										'pattern': 0,
-										'red_1': 0,
-										'green_1': 0,
-										'blue_1': 0,
-										'red_2': 0,
-										'green_2': 0,
-										'blue_2': 0,
-										'rate': 0,
+stored_values_A = {	'fixture_A': 1,
+										'pattern_A': 0,
+										'red_1_A': 0,
+										'green_1_A': 0,
+										'blue_1_A': 0,
+										'red_2_A': 0,
+										'green_2_A': 0,
+										'blue_2_A': 0,
+										'rate_A': 0,
+									}
+stored_values_B = {	'fixture_B': 2,
+										'pattern_B': 0,
+										'red_1_B': 0,
+										'green_1_B': 0,
+										'blue_1_B': 0,
+										'red_2_B': 0,
+										'green_2_B': 0,
+										'blue_2_B': 0,
+										'rate_B': 0,
+									}
+stored_values_C = {	'fixture_C': 3,
+										'pattern_C': 0,
+										'red_1_C': 0,
+										'green_1_C': 0,
+										'blue_1_C': 0,
+										'red_2_C': 0,
+										'green_2_C': 0,
+										'blue_2_C': 0,
+										'rate_C': 0,
 									}
 
 def control_shed(shed_params):
@@ -31,7 +51,7 @@ class ShedMove(object):
         self.colour1 = Colour(shed_params['red_1'], shed_params['green_1'], shed_params['blue_1'])
         self.colour2 = Colour(shed_params['red_2'], shed_params['green_2'], shed_params['blue_2'])
         self.rate = shed_params['rate']
-        stored_values = shed_params
+        #stored_values = shed_params
 
     def action(self):
         self.rate = (str(self.rate).zfill(3))        

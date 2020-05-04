@@ -2,5 +2,16 @@
 
 {% block content %}
 	<h1>Shed Control</h1>
-	{{ form.as_p }}
+	<form method="post">	
+		{% csrf_token %}
+		{{ form.as_table }}
+		{% for element in form %}
+			<tr>
+				<td><p>{{ element }}</p></td>
+				<td><p>{{ element }}</p></td>
+				<td><p>{{ element }}</p></td>
+			</tr>
+			{% endfor %}
+		<button type="submit">Shed!</button>
+	</form>
 {% endblock content %}
