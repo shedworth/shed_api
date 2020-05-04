@@ -7,7 +7,11 @@ tempo = 100
 beat = int(tempo/3.7)
 tempBeat = (60.0/tempo)
 
-class shedMove(object):
+def control_shed(shed_params):
+	shed_move = ShedMove(shed_params)
+	shed_move.action()
+
+class ShedMove(object):
     
     def __init__(self, shed_params):
         self.shed_params = shed_params
@@ -17,9 +21,9 @@ class shedMove(object):
         self.colour2 = Colour(shed_params['red_2'], shed_params['green_2'], shed_params['blue_2'])
         self.rate = shed_params['rate']
 
-        self.combine()
+        #self.combine()
 
-    def combine(self):
+    def action(self):
         self.rate = (str(self.rate).zfill(3))        
         serialOut = (str(self.fixture) + str(self.pattern) + str(self.colour1) + str(self.colour2) + str(self.rate) + "\n")
         #print(str(self.fixture))

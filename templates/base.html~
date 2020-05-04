@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<title>Michael Shedworth</title>
+	</head>
+	<body>
+		<header>
+			<h1><a href="{% url '' %}" >Michael Shedworth</a></h1>	
+		</header>	
+		<div>
+			{% block content %}
+			{% endblock content %}	
+		</div>
+	</body>
+</html>
