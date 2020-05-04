@@ -7,6 +7,17 @@ tempo = 100
 beat = int(tempo/3.7)
 tempBeat = (60.0/tempo)
 
+stored_values = {	'fixture': 0,
+										'pattern': 0,
+										'red_1': 0,
+										'green_1': 0,
+										'blue_1': 0,
+										'red_2': 0,
+										'green_2': 0,
+										'blue_2': 0,
+										'rate': 0,
+									}
+
 def control_shed(shed_params):
 	shed_move = ShedMove(shed_params)
 	shed_move.action()
@@ -20,8 +31,7 @@ class ShedMove(object):
         self.colour1 = Colour(shed_params['red_1'], shed_params['green_1'], shed_params['blue_1'])
         self.colour2 = Colour(shed_params['red_2'], shed_params['green_2'], shed_params['blue_2'])
         self.rate = shed_params['rate']
-
-        #self.combine()
+        stored_values = shed_params
 
     def action(self):
         self.rate = (str(self.rate).zfill(3))        

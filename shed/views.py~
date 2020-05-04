@@ -7,24 +7,16 @@ from .forms import ControlForm
 def control_shed(request):
 	submitted = False
 	if request.method == 'GET':
-		form = ControlForm(initial={'red_1': 0})
+		initial_values = Shedshow.stored_values
+		initial_values['fixture'] = 1
+		form = ControlForm(initial=initial_values)
 		if 'submitted' in request.GET:
 			submitted = True
 	
 	if request.method == 'POST':
 		form = ControlForm(request.POST)
 		if form.is_valid():
-			shed_params = {
-				'fixture': 0,		
-				'pattern': 1, 
-				'red_1': 0,
-				'blue_1': 0,
-				'green_1': 0,
-				'red_2': 0,
-				'green_2': 0,
-				'blue_2': 0,
-				'rate': 0,
-			}
+			shed_params = Shedshow.stored_values
 		
 			for parameter in request.POST:
 				if parameter in shed_params.keys():

@@ -3,6 +3,5 @@ from django.conf.urls import url
 from .views import control_shed
 
 urlpatterns = [
-	url('', HomePageView.as_view(), name="homepage"),	
 	url('shed/', control_shed, name='control_shed'),
 	]
