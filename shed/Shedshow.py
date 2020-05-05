@@ -17,6 +17,7 @@ stored_values_A = {	'fixture_A': 1,
 										'blue_2_A': 0,
 										'rate_A': 0,
 									}
+									
 stored_values_B = {	'fixture_B': 2,
 										'pattern_B': 0,
 										'red_1_B': 0,
@@ -38,6 +39,11 @@ stored_values_C = {	'fixture_C': 3,
 										'rate_C': 0,
 									}
 
+fixture_list = {1: stored_values_A,
+								2: stored_values_B,
+								3: stored_values_C
+								}	
+											
 def control_shed(shed_params):
 	shed_move = ShedMove(shed_params)
 	shed_move.action()

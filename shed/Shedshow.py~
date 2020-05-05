@@ -51,7 +51,7 @@ class ShedMove(object):
         self.colour1 = Colour(shed_params['red_1'], shed_params['green_1'], shed_params['blue_1'])
         self.colour2 = Colour(shed_params['red_2'], shed_params['green_2'], shed_params['blue_2'])
         self.rate = shed_params['rate']
-        stored_values = shed_params
+        #stored_values = shed_params
 
     def action(self):
         self.rate = (str(self.rate).zfill(3))        

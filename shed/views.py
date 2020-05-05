@@ -7,48 +7,28 @@ import copy
 # Create your views here.
 def control_shed(request):
 	submitted = False
+	
 	if request.method == 'GET':
-		initial_values = copy.deepcopy(Shedshow.stored_values_A)
-		initial_values.update(Shedshow.stored_values_B)
-		initial_values.update(Shedshow.stored_values_C)
-		initial_values['fixture'] = 0
-		initial_values['pattern'] = 1
-		form = ExtendedControlForm(initial=initial_values)
+		initial_values = {**Shedshow.stored_values_A, **Shedshow.stored_values_B, **Shedshow.stored_values_C}				# Set form values to currently held values
+		form = ExtendedControlForm(initial=initial_values)																			# Form to send to template, initialised with currently held values
 		if 'submitted' in request.GET:
 			submitted = True
 	
 	if request.method == 'POST':
 		form = ExtendedControlForm(request.POST)
 		if form.is_valid():
-			
-			shed_params_A = {}
-			for parameter in request.POST:
-				#print(request.POST.get(parameter))
-				if parameter in Shedshow.stored_values_A.keys():	
-					Shedshow.stored_values_A[parameter] = request.POST.get(parameter)	
-					shed_params_A[str(parameter[:-2])] = int(request.POST.get(parameter))	
-			shed_params_A['fixture'] = 1
-			Shedshow.control_shed(shed_params_A)
-			
-			shed_params_B = {}
-			for parameter in request.POST:
-				if parameter in Shedshow.stored_values_B.keys():
-					Shedshow.stored_values_B[parameter] = request.POST.get(parameter)	
-					shed_params_B[str(parameter[:-2])] = int(request.POST.get(parameter))				
-			shed_params_B['fixture'] = 2
-			Shedshow.control_shed(shed_params_B)
-			
-			shed_params_C = {}
-			for parameter in request.POST:
-				if parameter in Shedshow.stored_values_C.keys():
-					Shedshow.stored_values_C[parameter] = request.POST.get(parameter)						
-					shed_params_C[str(parameter[:-2])] = int(request.POST.get(parameter))	
-			shed_params_C['fixture'] = 3
-			Shedshow.control_shed(shed_params_C)
-		
+
+			for fixture, stored_values in Shedshow.fixture_list.items():												# Iterate through the three fixtures
+				shed_params = {}																																		# Create empty dictionary
+				for parameter in request.POST:																										# Iterate through parameters received from form
+					if parameter in stored_values.keys():																						# If parameter relates to this fixture:
+						stored_values[parameter] = request.POST.get(parameter)										# Update stored value in memory
+						shed_params[str(parameter[:-2])] = int(request.POST.get(parameter))			# Add parameter to shed_params dictionary
+				shed_params['fixture'] = fixture																										# Add fixture number to shed_params dictionary
+				Shedshow.control_shed(shed_params)																						# Send shed_params to shed
+						
 	return render(request, 'home.html', {'form': form, 'submitted': submitted})	
 	
-		#return HttpResponse('Control sent')
 	
 
 
