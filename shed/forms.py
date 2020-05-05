@@ -1,5 +1,14 @@
 from django import forms
 
+PATTERN_CHOICES = [
+	(1, 'Static'),
+	(2, 'Scan'),
+	(5, 'Sweep'),
+	(6, '2-Colour Flash'),
+	(4, '2-Colour Chase'),
+	(3, 'Rainbow'),
+]
+
 class ControlForm(forms.Form):
 	fixture = forms.IntegerField(max_value=4, label="Fixture")	
 	pattern = forms.IntegerField(max_value=255, label="Pattern")
@@ -13,8 +22,8 @@ class ControlForm(forms.Form):
 	
 class ExtendedControlForm(forms.Form):
 	#fixture = forms.IntegerField(max_value=4, label="Fixture")	
-	fixture_A = 1	
-	pattern_A = forms.IntegerField(max_value=255, label="Pattern")
+#	fixture_A = 1	
+	pattern_A = forms.CharField(label="Pattern", widget=forms.Select(choices=PATTERN_CHOICES))
 	red_1_A = forms.IntegerField(max_value=255, label="Red 1")
 	green_1_A = forms.IntegerField(min_value=0, max_value=255, label="Green 1")
 	blue_1_A = forms.IntegerField(min_value=0, max_value=255, label="Blue 1")
@@ -22,8 +31,8 @@ class ExtendedControlForm(forms.Form):
 	green_2_A = forms.IntegerField(min_value=0, max_value=255, label="Green 2")
 	blue_2_A = forms.IntegerField(min_value=0, max_value=255, label="Blue 2")
 	rate_A = forms.IntegerField(min_value=0, max_value=255, label="Rate")
-	fixture_B = 2	
-	pattern_B = forms.IntegerField(max_value=255, label="Pattern")
+	#fixture_B = 2	
+	pattern_B = forms.CharField(label="Pattern", widget=forms.Select(choices=PATTERN_CHOICES))
 	red_1_B = forms.IntegerField(max_value=255, label="Red 1")
 	green_1_B = forms.IntegerField(min_value=0, max_value=255, label="Green 1")
 	blue_1_B = forms.IntegerField(min_value=0, max_value=255, label="Blue 1")
@@ -31,8 +40,8 @@ class ExtendedControlForm(forms.Form):
 	green_2_B = forms.IntegerField(min_value=0, max_value=255, label="Green 2")
 	blue_2_B = forms.IntegerField(min_value=0, max_value=255, label="Blue 2")
 	rate_B = forms.IntegerField(min_value=0, max_value=255, label="Rate")
-	fixture_C = 3
-	pattern_C = forms.IntegerField(max_value=255, label="Pattern")
+	#fixture_C = 3
+	pattern_C = forms.CharField(label="Pattern", widget=forms.Select(choices=PATTERN_CHOICES))
 	red_1_C = forms.IntegerField(max_value=255, label="Red 1")
 	green_1_C = forms.IntegerField(min_value=0, max_value=255, label="Green 1")
 	blue_1_C = forms.IntegerField(min_value=0, max_value=255, label="Blue 1")
