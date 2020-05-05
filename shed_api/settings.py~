@@ -26,7 +26,7 @@ SECRET_KEY = '*_lhrmrk5lgn&3=i76z=yu5ha&yzr)zyi$n$h#1=e7rq_752dl'
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 
-													'http://shed-api.ddns.net']
+													'shed-api.ddns.net']
 
 
 # Application definition

@@ -1,17 +1,69 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 	<h1>Shed Control</h1>
 	<form method="post">	
 		{% csrf_token %}
-		{{ form.as_table }}
-		{% for element in form %}
-			<tr>
-				<td><p>{{ element }}</p></td>
-				<td><p>{{ element }}</p></td>
-				<td><p>{{ element }}</p></td>
-			</tr>
-			{% endfor %}
-		<button type="submit">Shed!</button>
+		<div class="form-row">
+			<div class="form-group col-md-2 mb-0">
+				<input type="text" readonly class="form-control-plaintext" id="fixturelabel" value="Left Side">
+			</div>		
+			<div class="form-group col-md-2 mb-0">
+				{{ form.pattern_A|as_crispy_field }}
+			</div>			
+			<div class="form-group col-md-1 mb-0">
+				{{ form.red_1_A|as_crispy_field }}
+			</div>
+			<div class="form-group col-md-1 mb-0">
+				{{ form.green_1_A|as_crispy_field }}
+			</div>					
+			<div class="form-group col-md-1 mb-0">
+				{{ form.blue_1_A|as_crispy_field }}
+			</div>	
+			<div class="form-group col-md-1 mb-0">
+				{{ form.red_2_A|as_crispy_field }}
+			</div>
+			<div class="form-group col-md-1 mb-0">
+				{{ form.green_2_A|as_crispy_field }}
+			</div>					
+			<div class="form-group col-md-1 mb-0">
+				{{ form.blue_2_A|as_crispy_field }}
+			</div>		
+			<div class="form-group col-md-1 mb-0">
+				{{ form.rate_A|as_crispy_field }}
+			</div>		
+		</div>
+				<div class="form-row">
+			<div class="form-group col-md-2 mb-0">
+				<input type="text" readonly class="form-control-plaintext" id="fixturelabel" value="Left Side">
+			</div>		
+			<div class="form-group col-md-2 mb-0">
+				{{ form.pattern_B|as_crispy_field }}
+			</div>			
+			<div class="form-group col-md-1 mb-0">
+				{{ form.red_1_B|as_crispy_field }}
+			</div>
+			<div class="form-group col-md-1 mb-0">
+				{{ form.green_1_B|as_crispy_field }}
+			</div>					
+			<div class="form-group col-md-1 mb-0">
+				{{ form.blue_1_B|as_crispy_field }}
+			</div>	
+			<div class="form-group col-md-1 mb-0">
+				{{ form.red_2_B|as_crispy_field }}
+			</div>
+			<div class="form-group col-md-1 mb-0">
+				{{ form.green_2_B|as_crispy_field }}
+			</div>					
+			<div class="form-group col-md-1 mb-0">
+				{{ form.blue_2_B|as_crispy_field }}
+			</div>		
+			<div class="form-group col-md-1 mb-0">
+				{{ form.rate_B|as_crispy_field }}
+			</div>		
+		</div>
+		
+		<button class="btn btn-success ml-2" type="submit">Send</button>
 	</form>
 {% endblock content %}
