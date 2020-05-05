@@ -8,6 +8,8 @@ beat = int(tempo/3.7)
 tempBeat = (60.0/tempo)
 
 stored_values_A = {	'pattern_A': 0,
+										'colour_1_A': 0,
+										'colour_2_A': 0,
 										'red_1_A': 0,
 										'green_1_A': 0,
 										'blue_1_A': 0,
@@ -18,6 +20,8 @@ stored_values_A = {	'pattern_A': 0,
 									}
 									
 stored_values_B = {	'pattern_B': 0,
+										'colour_1_B': 0,
+										'colour_2_B': 0,
 										'red_1_B': 0,
 										'green_1_B': 0,
 										'blue_1_B': 0,
@@ -27,6 +31,8 @@ stored_values_B = {	'pattern_B': 0,
 										'rate_B': 100,
 									}
 stored_values_C = {	'pattern_C': 0,
+										'colour_1_C': 0,
+										'colour_2_C': 0,
 										'red_1_C': 0,
 										'green_1_C': 0,
 										'blue_1_C': 0,
@@ -51,8 +57,10 @@ class ShedMove(object):
         self.shed_params = shed_params
         self.fixture = shed_params['fixture']
         self.pattern = shed_params['pattern']
-        self.colour1 = Colour(shed_params['red_1'], shed_params['green_1'], shed_params['blue_1'])
-        self.colour2 = Colour(shed_params['red_2'], shed_params['green_2'], shed_params['blue_2'])
+        self.red_1, self.green_1, self.blue_1 = hex_to_rgb(shed_params['colour_1'])
+        self.red_2, self.green_2, self.blue_2 = hex_to_rgb(shed_params['colour_2'])
+        self.colour1 = Colour(self.red_1, self.green_1, self.blue_1)
+        self.colour2 = Colour(self.red_2, self.green_2, self.blue_2)
         self.rate = shed_params['rate']
         #stored_values = shed_params
 
@@ -72,6 +80,9 @@ def Colour(red, green, blue, white = 0):
         return str("00000000")
     else:
         return ((str((white << 24) | (red << 16)| (green <<8) | blue)).zfill(8))
+
+def hex_to_rgb(hex_value):
+		return tuple(int(hex_value[i:i+2], 16) for i in (0, 2, 4))		
 
 def sides(pattern, red1, green1, blue1, red2, green2, blue2, rate):
         shedMove(1,pattern,red1,green1,blue1,red2,green2,blue2,rate)

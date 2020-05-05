@@ -3,5 +3,5 @@ from django.conf.urls import url
 from .views import control_shed
 
 urlpatterns = [
-	url('shed/', control_shed, name='control_shed'),
+	url('', control_shed, name='control_shed'),
 	]

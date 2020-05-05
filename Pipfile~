@@ -9,7 +9,7 @@ verify_ssl = true
 django = "==3.0"
 pyserial = "*"
 django-crispy-forms = "==1.8.1"
-
+bootstrap-colorpicker = {editable = true,git = "https://github.com/itsjavi/bootstrap-colorpicker.git",ref = "master"}
 
 [requires]
 python_version = "3.7"

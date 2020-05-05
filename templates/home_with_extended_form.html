@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+	<h1>Shed Control</h1>
+	<form method="post">	
+		{% csrf_token %}
+		<div class="form-row">
+			<div class="form-group col-md-2 mb-0">
+				<input type="text" readonly class="form-control-plaintext" id="fixturelabel" value="Left Side">
+			</div>
+			<div class="form-group col-md-2 mb-0">
+				{{ form.pattern_A|as_crispy_field }}
+			</div>			
+			<div class="form-group col-md-2 mb-0">
+				<input name="colour_1_A" type="hidden" id="color_value" value="99cc00">
+				<button class="jscolor {valueElement: 'color_value'}">Pick a colour</button>
+			</div>		
+			<div class="form-group col-md-1 mb-0">
+				{{ form.red_2_A|as_crispy_field }}
+			</div>
+			<div class="form-group col-md-1 mb-0">
+				{{ form.green_2_A|as_crispy_field }}
+			</div>					
+			<div class="form-group col-md-1 mb-0">
+				{{ form.blue_2_A|as_crispy_field }}
+			</div>		
+			<div class="form-group col-md-1 mb-0">
+				{{ form.rate_A|as_crispy_field }}
+			</div>		
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-2 mb-0">
+				<input type="text" readonly class="form-control-plaintext" id="fixturelabel" value="Right Side">
+			</div>		
+			<div class="form-group col-md-2 mb-0">
+				{{ form.pattern_B|as_crispy_field }}
+			</div>			
+			<div class="form-group col-md-1 mb-0">
+				{{ form.red_1_B|as_crispy_field }}
+			</div>
+			<div class="form-group col-md-1 mb-0">
+				{{ form.green_1_B|as_crispy_field }}
+			</div>					
+			<div class="form-group col-md-1 mb-0">
+				{{ form.blue_1_B|as_crispy_field }}
+			</div>	
+			<div class="form-group col-md-1 mb-0">
+				{{ form.red_2_B|as_crispy_field }}
+			</div>
+			<div class="form-group col-md-1 mb-0">
+				{{ form.green_2_B|as_crispy_field }}
+			</div>					
+			<div class="form-group col-md-1 mb-0">
+				{{ form.blue_2_B|as_crispy_field }}
+			</div>		
+			<div class="form-group col-md-1 mb-0">
+				{{ form.rate_B|as_crispy_field }}
+			</div>		
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-2 mb-0">
+				<input type="text" readonly class="form-control-plaintext" id="fixturelabel" value="Window">
+			</div>		
+			<div class="form-group col-md-2 mb-0">
+				{{ form.pattern_C|as_crispy_field }}
+			</div>			
+			<div class="form-group col-md-1 mb-0">
+				{{ form.red_1_C|as_crispy_field }}
+			</div>
+			<div class="form-group col-md-1 mb-0">
+				{{ form.green_1_C|as_crispy_field }}
+			</div>					
+			<div class="form-group col-md-1 mb-0">
+				{{ form.blue_1_C|as_crispy_field }}
+			</div>	
+			<div class="form-group col-md-1 mb-0">
+				{{ form.red_2_C|as_crispy_field }}
+			</div>
+			<div class="form-group col-md-1 mb-0">
+				{{ form.green_2_C|as_crispy_field }}
+			</div>					
+			<div class="form-group col-md-1 mb-0">
+				{{ form.blue_2_C|as_crispy_field }}
+			</div>		
+			<div class="form-group col-md-1 mb-0">
+				{{ form.rate_C|as_crispy_field }}
+			</div>		
+		</div>
+		
+		<button class="btn btn-success ml-2" type="submit">Send</button>
+	</form>
+	
+{% endblock content %}

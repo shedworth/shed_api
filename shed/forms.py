@@ -1,15 +1,15 @@
 from django import forms
 
 PATTERN_CHOICES = [
-	(1, 'Static'),
-	(2, 'Scan'),
-	(5, 'Sweep'),
-	(6, '2-Colour Flash'),
-	(4, '2-Colour Chase'),
-	(3, 'Rainbow'),
+	(1, 'Static (colour 1)'),
+	(2, 'Scan (colour 1)'),
+	(5, 'Sweep (colour 1)'),
+	(6, '2-Colour Flash (colour 1 & 2)'),
+	(4, '2-Colour Chase (colour 1 & 2)'),
+	(3, 'Rainbow (colours inactive)'),
 ]
 
-class ControlForm(forms.Form):
+class ControlForm(forms.Form):																				# Form for single fixture control
 	fixture = forms.IntegerField(max_value=4, label="Fixture")	
 	pattern = forms.IntegerField(max_value=255, label="Pattern")
 	red_1 = forms.IntegerField(max_value=255, label="Red 1")
@@ -20,7 +20,7 @@ class ControlForm(forms.Form):
 	blue_2 = forms.IntegerField(min_value=0, max_value=255, label="Blue 2")
 	rate = forms.IntegerField(min_value=0, max_value=255, label="Rate")
 	
-class ExtendedControlForm(forms.Form):
+class ExtendedControlForm(forms.Form):														# Form with individual field for each parameter
 	#fixture = forms.IntegerField(max_value=4, label="Fixture")	
 #	fixture_A = 1	
 	pattern_A = forms.CharField(label="Pattern", widget=forms.Select(choices=PATTERN_CHOICES))
@@ -48,4 +48,18 @@ class ExtendedControlForm(forms.Form):
 	red_2_C = forms.IntegerField(min_value=0, max_value=255, label="Red 2")
 	green_2_C = forms.IntegerField(min_value=0, max_value=255, label="Green 2")
 	blue_2_C = forms.IntegerField(min_value=0, max_value=255, label="Blue 2")
+	rate_C = forms.IntegerField(min_value=0, max_value=255, label="Rate")
+	
+class ColourPickerControlForm(forms.Form):											# Form for all fixtures with Javascript colour picker
+	pattern_A = forms.CharField(label="Pattern", widget=forms.Select(choices=PATTERN_CHOICES))
+	colour_1_A = forms.CharField(widget=forms.HiddenInput())
+	colour_2_A = forms.CharField(widget=forms.HiddenInput())
+	rate_A = forms.IntegerField(min_value=0, max_value=255, label="Rate")
+	pattern_B = forms.CharField(label="Pattern", widget=forms.Select(choices=PATTERN_CHOICES))
+	colour_1_B = forms.CharField(widget=forms.HiddenInput())
+	colour_2_B = forms.CharField(widget=forms.HiddenInput())
+	rate_B = forms.IntegerField(min_value=0, max_value=255, label="Rate")
+	pattern_C = forms.CharField(label="Pattern", widget=forms.Select(choices=PATTERN_CHOICES))
+	colour_1_C = forms.CharField(widget=forms.HiddenInput())
+	colour_2_C = forms.CharField(widget=forms.HiddenInput())	
 	rate_C = forms.IntegerField(min_value=0, max_value=255, label="Rate")
