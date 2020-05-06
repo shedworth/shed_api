@@ -1,72 +1,81 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-
 {% block content %}
-	<h1>Shed Control (Ajax)</h1>
+
+	<h1>Shed Control</h1>
 	<form class='my-ajax-form' method="POST" action = '.' data_url='{{ request.build.absolute_uri|safe }}'>	
 		{% csrf_token %}
 		<div class="form-row">
-			<div class="form-group col-md-2 mb-0">
-				<input type="text" readonly class="form-control-plaintext" id="fixturelabel" value="Left Side">
-			</div>
-			<div class="form-group col-md-2 mb-0">
+			<div class="form-group col-sm-2 mt-3"><h5>Left Wall</h5></div>	
+			<div class="form-group col-sm-3 mb-0" id="patternA">
 				{{ form.pattern_A|as_crispy_field }}
 			</div>			
-			<div class="form-group col-md-2 mb-0">
+			<div class="form-group col-sm-1 mt-1 pt-4">
 				<input name="colour_1_A" type="hidden" id="color_value_1_A" value={{ form.colour_1_A.initial }}>
-				<button class="jscolor {valueElement: 'color_value_1_A'}">Colour 1</button>
+				<button class="jscolor {valueElement: 'color_value_1_A'} btn btn-outline-light">Colour 1</button>
 			</div>		
-			<div class="form-group col-md-2 mb-0">
+			<div class="form-group col-sm-1 mt-1 pt-4">
 				<input name="colour_2_A" type="hidden" id="color_value_2_A" value={{ form.colour_2_A.initial }}>
-				<button class="jscolor {valueElement: 'color_value_2_A'}">Colour 2</button>
+				<button class="jscolor {valueElement: 'color_value_2_A'} btn btn-outline-light">Colour 2</button>
 			</div>
-			<div class="form-group col-md-1 mb-0">
-				{{ form.rate_A|as_crispy_field }}
+			<div class="form-group col-sm-3 mt-0">
+				<p>Rate</p>
+				<div class="d-flex justify-content-center mt-1">
+	  				<div class="w-75">
+	    				<input name = "rate_A" type="range" class="custom-range" id="customRange11" value={{ form.rate_A.initial }} min="0" max="225">
+	  				</div>
+	  				<span class="font-weight-bold text-primary ml-2 valueSpan2"></span>
+				</div>			
 			</div>		
 		</div>
 		<div class="form-row">
-			<div class="form-group col-md-2 mb-0">
-				<input type="text" readonly class="form-control-plaintext" id="fixturelabel" value="Right Side">
-			</div>		
-			<div class="form-group col-md-2 mb-0">
+			<div class="form-group col-sm-2 mt-3"><h5>Right Wall</h5></div>	
+			<div class="form-group col-sm-3 mb-0">
 				{{ form.pattern_B|as_crispy_field }}
 			</div>			
-			<div class="form-group col-md-2 mb-0">
+			<div class="form-group col-sm-1 mt-1 pt-4">
 				<input name="colour_1_B" type="hidden" id="color_value_1_B" value={{ form.colour_1_B.initial }}>
-				<button class="jscolor {valueElement: 'color_value_1_B'}">Colour 1</button>
+				<button class="jscolor {valueElement: 'color_value_1_B'} btn btn-outline-light">Colour 1</button>
 			</div>		
-			<div class="form-group col-md-2 mb-0">
+			<div class="form-group col-sm-1 mt-1 pt-4">
 				<input name="colour_2_B" type="hidden" id="color_value_2_B" value={{ form.colour_2_B.initial }}>
-				<button class="jscolor {valueElement: 'color_value_2_B'}">Colour 2</button>
+				<button class="jscolor {valueElement: 'color_value_2_B'} btn btn-outline-light">Colour 2</button>
 			</div>
-			<div class="form-group col-md-1 mb-0">
-				{{ form.rate_B|as_crispy_field }}
+			<div class="form-group col-sm-3 mt-0">
+				<p>Rate</p>
+				<div class="d-flex justify-content-center mt-1">
+	  				<div class="w-75">
+	    				<input name = "rate_B" type="range" class="custom-range" id="customRange12" value={{ form.rate_B.initial }} min="0" max="225">
+	  				</div>
+	  				<span class="font-weight-bold text-primary ml-2 valueSpan2"></span>
+				</div>			
 			</div>		
 		</div>
 		<div class="form-row">
-			<div class="form-group col-md-2 mb-0">
-				<input type="text" readonly class="form-control-plaintext" id="fixturelabel" value="Window">
-			</div>		
-			<div class="form-group col-md-2 mb-0">
+			<div class="form-group col-sm-2 mt-3"><h5>Window</h5></div>	
+			<div class="form-group col-sm-3 mb-0">
 				{{ form.pattern_C|as_crispy_field }}
 			</div>		
-			<div class="form-group col-md-2 mb-0">
+			<div class="form-group col-sm-1 mt-1 pt-4">
 				<input name="colour_1_C" type="hidden" id="color_value_1_C" value={{ form.colour_1_C.initial }}>
-				<button class="jscolor {valueElement: 'color_value_1_C'}">Colour 1</button>
+				<button class="jscolor {valueElement: 'color_value_1_C'} btn btn-outline-light">Colour 1</button>
 			</div>		
-			<div class="form-group col-md-2 mb-0">
+			<div class="form-group col-sm-1 mt-1 pt-4">
 				<input name="colour_2_C" type="hidden" id="color_value_2_C" value={{ form.colour_2_C.initial }}>
-				<button class="jscolor {valueElement: 'color_value_2_C'}">Colour 2</button>
+				<button class="jscolor {valueElement: 'color_value_2_C'} btn btn-outline-light">Colour 2</button>
 			</div>	
-			<div class="form-group col-md-1 mb-0">
-				{{ form.rate_C|as_crispy_field }}
+			<div class="form-group col-sm-3 mt-0">
+				<p>Rate</p>
+				<div class="d-flex justify-content-center mt-1">
+	  				<div class="w-75">
+	    				<input name = "rate_C" type="range" class="custom-range" id="customRange13" value={{ form.rate_C.initial }} min="0" max="225">
+	  				</div>
+	  				<span class="font-weight-bold text-primary ml-2 valueSpan2"></span>
+				</div>			
 			</div>		
 		</div>
-		
-		<button class="btn btn-success ml-2" type="submit">Send</button>
+		<br>
+		<button class="btn btn-outline-danger btn-lg btn-lg" type="submit">Send To Shed</button>
 	</form>
-	
-
-
-
+	<br>
 {% endblock content %}

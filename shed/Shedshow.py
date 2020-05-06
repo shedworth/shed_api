@@ -8,8 +8,8 @@ beat = int(tempo/3.7)
 tempBeat = (60.0/tempo)
 
 stored_values_A = {	'pattern_A': 0,
-										'colour_1_A': 0,
-										'colour_2_A': 0,
+										'colour_1_A': '000000',
+										'colour_2_A': '000000',
 										'red_1_A': 0,
 										'green_1_A': 0,
 										'blue_1_A': 0,
@@ -20,8 +20,8 @@ stored_values_A = {	'pattern_A': 0,
 									}
 									
 stored_values_B = {	'pattern_B': 0,
-										'colour_1_B': 0,
-										'colour_2_B': 0,
+										'colour_1_B': '000000',
+										'colour_2_B': '000000',
 										'red_1_B': 0,
 										'green_1_B': 0,
 										'blue_1_B': 0,
@@ -31,8 +31,8 @@ stored_values_B = {	'pattern_B': 0,
 										'rate_B': 100,
 									}
 stored_values_C = {	'pattern_C': 0,
-										'colour_1_C': 0,
-										'colour_2_C': 0,
+										'colour_1_C': '000000',
+										'colour_2_C': '000000',
 										'red_1_C': 0,
 										'green_1_C': 0,
 										'blue_1_C': 0,
@@ -47,19 +47,21 @@ fixture_list = {1: stored_values_A,
 								3: stored_values_C
 								}	
 
+def get_stored_values():
+	return {**stored_values_A, **stored_values_B, **stored_values_C}
+	
 def send_to_shed(valid_response):
-	print("trousers")
-	for fixture, stored_values in fixture_list.items():												# Iterate through the three fixtures
+	for fixture, stored_values in fixture_list.items():																		# Iterate through the three fixtures
 		shed_params = {}																																		# Initialise empty dictionary to hold new values			
 		for parameter in valid_response:																										# Iterate through parameters received from form
 			if parameter in stored_values.keys():																						# If parameter relates to this fixture:
 				stored_values[parameter] = valid_response.get(parameter)									# Update stored value in memory
 				shed_params[str(parameter[:-2])] = valid_response.get(parameter)					# Add parameter to shed_params dictionarys		
+		print(stored_values_A)		
 		shed_params['fixture'] = fixture																										# Add fixture number to shed_params dictionary
 		control_shed(shed_params)		
-				
-				
 					
+								
 def control_shed(shed_params):
 	shed_move = ShedMove(shed_params)
 	shed_move.action()
@@ -80,11 +82,7 @@ class ShedMove(object):
     def action(self):
         self.rate = (str(self.rate).zfill(3))        
         serialOut = (str(self.fixture) + str(self.pattern) + str(self.colour1) + str(self.colour2) + str(self.rate) + "\n")
-        #print(str(self.fixture))
-        #print(str(self.pattern))
-        #print(str(self.colour1))
-        #print(str(self.colour2))
-        #print(str(self.rate))
+
 
         arduino.write(str.encode(serialOut))
         

@@ -39,6 +39,11 @@ class ControlShedAjaxView(AjaxFormMixin, FormView):
 	form_class = ColourPickerControlForm
 	template_name = 'home_ajax.html'
 	success_url = reverse_lazy('control_shed_ajax')
+
+	def get(self, request, *args, **kwargs):
+		print(self.initial)
+		form = self.form_class(initial=Shedshow.get_stored_values())
+		return render(request, self.template_name, {'form': form})	
 	
 	def form_valid(self, form):
 		Shedshow.send_to_shed(self.request.POST)
