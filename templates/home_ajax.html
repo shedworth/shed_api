@@ -3,7 +3,7 @@
 
 {% block content %}
 	<h1>Shed Control (Ajax)</h1>
-	<form method="post">	
+	<form class='my-ajax-form' method="POST" action = '.' data_url='{{ request.build.absolute_uri|safe }}'>	
 		{% csrf_token %}
 		<div class="form-row">
 			<div class="form-group col-md-2 mb-0">
@@ -66,4 +66,7 @@
 		<button class="btn btn-success ml-2" type="submit">Send</button>
 	</form>
 	
+
+
+
 {% endblock content %}

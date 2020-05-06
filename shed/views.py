@@ -40,3 +40,8 @@ class ControlShedAjaxView(AjaxFormMixin, FormView):
 	template_name = 'home_ajax.html'
 	success_url = reverse_lazy('control_shed_ajax')
 	
+	def form_valid(self, form):
+		Shedshow.send_to_shed(self.request.POST)
+		return super().form_valid(form)
+		
+	

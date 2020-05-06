@@ -1,3 +1,5 @@
+from django.http import JsonResponse
+
 class AjaxFormMixin(object):
 	def form_invalid(self, form):
 		response = super(AjaxFormMixin, self).form_invalid(form)

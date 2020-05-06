@@ -46,9 +46,20 @@ fixture_list = {1: stored_values_A,
 								2: stored_values_B,
 								3: stored_values_C
 								}	
-def get_stored_values_A():
-	return stored_values_A
-											
+
+def send_to_shed(valid_response):
+	print("trousers")
+	for fixture, stored_values in fixture_list.items():												# Iterate through the three fixtures
+		shed_params = {}																																		# Initialise empty dictionary to hold new values			
+		for parameter in valid_response:																										# Iterate through parameters received from form
+			if parameter in stored_values.keys():																						# If parameter relates to this fixture:
+				stored_values[parameter] = valid_response.get(parameter)									# Update stored value in memory
+				shed_params[str(parameter[:-2])] = valid_response.get(parameter)					# Add parameter to shed_params dictionarys		
+		shed_params['fixture'] = fixture																										# Add fixture number to shed_params dictionary
+		control_shed(shed_params)		
+				
+				
+					
 def control_shed(shed_params):
 	shed_move = ShedMove(shed_params)
 	shed_move.action()
