@@ -1,8 +1,15 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import FormView
+from django.http import JsonResponse
 from . import Shedshow
+from .mixins import AjaxFormMixin
 from .forms import ColourPickerControlForm
 import copy
 # Create your views here.
+
+# Non-Ajax form
+
 def control_shed(request):
 	submitted = False
 	
@@ -25,8 +32,11 @@ def control_shed(request):
 				shed_params['fixture'] = fixture																										# Add fixture number to shed_params dictionary
 				Shedshow.control_shed(shed_params)																						# Send shed_params to shed				
 	return render(request, 'home.html', {'form': form, 'submitted': submitted})	
+
+# Ajax-enabled form	
 	
+class ControlShedAjaxView(AjaxFormMixin, FormView):
+	form_class = ColourPickerControlForm
+	template_name = 'home_ajax.html'
+	success_url = reverse_lazy('control_shed_ajax')
 	
-
-
-

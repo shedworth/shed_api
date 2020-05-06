@@ -8,7 +8,7 @@ PATTERN_CHOICES = [
 	(4, '2-Colour Chase (colour 1 & 2)'),
 	(3, 'Rainbow (colours inactive)'),
 ]
-
+	
 class ControlForm(forms.Form):																				# Form for single fixture control
 	fixture = forms.IntegerField(max_value=4, label="Fixture")	
 	pattern = forms.IntegerField(max_value=255, label="Pattern")

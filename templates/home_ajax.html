@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+	<h1>Shed Control (Ajax)</h1>
+	<form method="post">	
+		{% csrf_token %}
+		<div class="form-row">
+			<div class="form-group col-md-2 mb-0">
+				<input type="text" readonly class="form-control-plaintext" id="fixturelabel" value="Left Side">
+			</div>
+			<div class="form-group col-md-2 mb-0">
+				{{ form.pattern_A|as_crispy_field }}
+			</div>			
+			<div class="form-group col-md-2 mb-0">
+				<input name="colour_1_A" type="hidden" id="color_value_1_A" value={{ form.colour_1_A.initial }}>
+				<button class="jscolor {valueElement: 'color_value_1_A'}">Colour 1</button>
+			</div>		
+			<div class="form-group col-md-2 mb-0">
+				<input name="colour_2_A" type="hidden" id="color_value_2_A" value={{ form.colour_2_A.initial }}>
+				<button class="jscolor {valueElement: 'color_value_2_A'}">Colour 2</button>
+			</div>
+			<div class="form-group col-md-1 mb-0">
+				{{ form.rate_A|as_crispy_field }}
+			</div>		
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-2 mb-0">
+				<input type="text" readonly class="form-control-plaintext" id="fixturelabel" value="Right Side">
+			</div>		
+			<div class="form-group col-md-2 mb-0">
+				{{ form.pattern_B|as_crispy_field }}
+			</div>			
+			<div class="form-group col-md-2 mb-0">
+				<input name="colour_1_B" type="hidden" id="color_value_1_B" value={{ form.colour_1_B.initial }}>
+				<button class="jscolor {valueElement: 'color_value_1_B'}">Colour 1</button>
+			</div>		
+			<div class="form-group col-md-2 mb-0">
+				<input name="colour_2_B" type="hidden" id="color_value_2_B" value={{ form.colour_2_B.initial }}>
+				<button class="jscolor {valueElement: 'color_value_2_B'}">Colour 2</button>
+			</div>
+			<div class="form-group col-md-1 mb-0">
+				{{ form.rate_B|as_crispy_field }}
+			</div>		
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-2 mb-0">
+				<input type="text" readonly class="form-control-plaintext" id="fixturelabel" value="Window">
+			</div>		
+			<div class="form-group col-md-2 mb-0">
+				{{ form.pattern_C|as_crispy_field }}
+			</div>		
+			<div class="form-group col-md-2 mb-0">
+				<input name="colour_1_C" type="hidden" id="color_value_1_C" value={{ form.colour_1_C.initial }}>
+				<button class="jscolor {valueElement: 'color_value_1_C'}">Colour 1</button>
+			</div>		
+			<div class="form-group col-md-2 mb-0">
+				<input name="colour_2_C" type="hidden" id="color_value_2_C" value={{ form.colour_2_C.initial }}>
+				<button class="jscolor {valueElement: 'color_value_2_C'}">Colour 2</button>
+			</div>	
+			<div class="form-group col-md-1 mb-0">
+				{{ form.rate_C|as_crispy_field }}
+			</div>		
+		</div>
+		
+		<button class="btn btn-success ml-2" type="submit">Send</button>
+	</form>
+	
+{% endblock content %}

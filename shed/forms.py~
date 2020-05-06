@@ -52,7 +52,7 @@ class ExtendedControlForm(forms.Form):														# Form with individual field
 	
 class ColourPickerControlForm(forms.Form):											# Form for all fixtures with Javascript colour picker
 	pattern_A = forms.CharField(label="Pattern", widget=forms.Select(choices=PATTERN_CHOICES))
-	colour_1_A = forms.CharField(initial = self.data['colour_1_A'], widget=forms.HiddenInput())
+	colour_1_A = forms.CharField(widget=forms.HiddenInput())
 	colour_2_A = forms.CharField(widget=forms.HiddenInput())
 	rate_A = forms.IntegerField(min_value=0, max_value=255, label="Rate")
 	pattern_B = forms.CharField(label="Pattern", widget=forms.Select(choices=PATTERN_CHOICES))
