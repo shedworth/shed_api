@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import FormView
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from . import Shedshow
 from .mixins import AjaxFormMixin
 from .forms import ColourPickerControlForm
@@ -41,7 +41,6 @@ class ControlShedAjaxView(AjaxFormMixin, FormView):
 	success_url = reverse_lazy('control_shed_ajax')
 
 	def get(self, request, *args, **kwargs):
-		print(self.initial)
 		form = self.form_class(initial=Shedshow.get_stored_values())
 		return render(request, self.template_name, {'form': form})	
 	
@@ -49,4 +48,8 @@ class ControlShedAjaxView(AjaxFormMixin, FormView):
 		Shedshow.send_to_shed(self.request.POST)
 		return super().form_valid(form)
 		
-	
+def fire_shed(request):
+	print(request.POST)
+	if request.POST.get('firing') == 'yes_please':
+		Shedshow.fire()
+	return HttpResponse("fired")

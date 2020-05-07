@@ -1,5 +1,8 @@
 #! /usr/bin/env python
 import serial, time
+from . import ShedPresets
+
+FLAMES_ACTIVE = False
 
 arduino = serial.Serial('/dev/ttyACM0', 19200, timeout=.5)
     
@@ -57,7 +60,6 @@ def send_to_shed(valid_response):
 			if parameter in stored_values.keys():																						# If parameter relates to this fixture:
 				stored_values[parameter] = valid_response.get(parameter)									# Update stored value in memory
 				shed_params[str(parameter[:-2])] = valid_response.get(parameter)					# Add parameter to shed_params dictionarys		
-		print(stored_values_A)		
 		shed_params['fixture'] = fixture																										# Add fixture number to shed_params dictionary
 		control_shed(shed_params)		
 					
@@ -66,6 +68,11 @@ def control_shed(shed_params):
 	shed_move = ShedMove(shed_params)
 	shed_move.action()
 
+def fire():
+	if FLAMES_ACTIVE:
+		shedmove = ShedMove(ShedPresets.flame_hit)
+		shedmove.action()
+	
 class ShedMove(object):
     
     def __init__(self, shed_params):
@@ -82,11 +89,7 @@ class ShedMove(object):
     def action(self):
         self.rate = (str(self.rate).zfill(3))        
         serialOut = (str(self.fixture) + str(self.pattern) + str(self.colour1) + str(self.colour2) + str(self.rate) + "\n")
-        #print(str(self.fixture))
-        #print(str(self.pattern))
-        #print(str(self.colour1))
-        #print(str(self.colour2))
-        #print(str(self.rate))
+
 
         arduino.write(str.encode(serialOut))
         
@@ -134,7 +137,6 @@ def sides5():   # sides blue
 def sides_scan1():  # sides scan yellow
     sides(2,255,150,0,0,0,0,12)
  
-
 
 
 #time.sleep(5) # wait for Arduino to get its shit together

@@ -29,8 +29,20 @@ $.ajaxSetup({
     }
 });
 
+
 $(document).ready(function(){
 	console.log("script running")    
+	
+	
+	$(document).on("click", "#fire-btn", function () {
+		var data = {"firing": "yes_please"}
+		$.ajax({
+			type:				'POST',
+			url: 				'fire/',
+			data:			data
+		});    	
+    });
+	
     var $myForm = $('.my-ajax-form')
     $myForm.submit(function(event){
         event.preventDefault()
@@ -45,6 +57,10 @@ $(document).ready(function(){
         })
     })
 
+
+
+
+
     function handleFormSuccess(data, textStatus, jqXHR){
         console.log(data)
         console.log(textStatus)
@@ -57,4 +73,6 @@ $(document).ready(function(){
         console.log(textStatus)
         console.log(errorThrown)
     }
+    
+
 })

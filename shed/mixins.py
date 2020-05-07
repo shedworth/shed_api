@@ -17,4 +17,4 @@ class AjaxFormMixin(object):
 				}
 			return JsonResponse(data)
 		else:
-			return response	
+			return response	    
