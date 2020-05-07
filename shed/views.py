@@ -48,7 +48,19 @@ class ControlShedAjaxView(AjaxFormMixin, FormView):
 		Shedshow.send_to_shed(self.request.POST)
 		return super().form_valid(form)
 		
+#Fires shed		
 def fire_shed(request):
-	if request.POST.get('firing') == 'yes_please':
-		Shedshow.fire()
-	return HttpResponse("fired")
+	if request.method == 'POST':
+		if request.POST.get('firing') == 'yes_please':
+			Shedshow.fire()
+		return HttpResponse("fired")
+	else:
+		return HttpResponse("invalid")
+	
+#Runs a preset state	
+def run_preset(request):
+	if request.method == 'POST':
+		Shedshow.run_preset(request.POST.get('preset'))
+		return HttpResponse("preset chosen")
+	else:
+		return HttpResponse("invalid")

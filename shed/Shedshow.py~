@@ -2,7 +2,7 @@
 import serial, time
 from . import ShedPresets
 
-FLAMES_ACTIVE = False
+FLAMES_ACTIVE = True
 
 arduino = serial.Serial('/dev/ttyACM0', 19200, timeout=.5)
     
@@ -71,6 +71,12 @@ def control_shed(shed_params):
 def fire():
 	if FLAMES_ACTIVE:
 		shedmove = ShedMove(ShedPresets.flame_hit)
+		shedmove.action()
+		
+def run_preset(preset_no):
+	print(preset_no)
+	for fixture, params in ShedPresets.presets[preset_no].items():
+		shedmove = ShedMove(params)
 		shedmove.action()
 	
 class ShedMove(object):

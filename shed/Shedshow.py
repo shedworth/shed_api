@@ -66,11 +66,17 @@ def send_to_shed(valid_response):
 								
 def control_shed(shed_params):
 	shed_move = ShedMove(shed_params)
+	print(shed_params)
 	shed_move.action()
 
 def fire():
 	if FLAMES_ACTIVE:
 		shedmove = ShedMove(ShedPresets.flame_hit)
+		shedmove.action()
+		
+def run_preset(preset_no):
+	for fixture, params in ShedPresets.presets[preset_no].items():
+		shedmove = ShedMove(params)
 		shedmove.action()
 	
 class ShedMove(object):

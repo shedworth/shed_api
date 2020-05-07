@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-				<button class="btn btn-outline-danger btn-block" id="fire-btn" onclick="fire()">Fire!</button>
 <h1>Shed Control</h1>
 <br>
 <div class="container">
@@ -19,14 +18,14 @@
 								</button>
 								<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 									<div class="btn-group-vertical" role="group">    
-										<button type="button" class="btn btn-secondary" style="background-color: #f54242">All red</button>
-										<button type="button" class="btn btn-secondary" style="background-color: #42f54b">All green</button>    
-										<button type="button" class="btn btn-secondary" style="background-color: #4b42f5">All blue</button>   
-										<button type="button" class="btn btn-secondary" style="background-color: #f5ef42">All yellow</button>
-										<button type="button" class="btn btn-secondary" style="background-color: #42f5ef">All cyan</button>    
-										<button type="button" class="btn btn-secondary" style="background-color: #f542ec">All magenta</button>
-										<button type="button" class="btn btn-secondary" style="background-color: #f58a42">All orange</button>     
-										<button type="button" class="btn btn-secondary" style="background-color: #ffffff; color: black;">All white</button>  
+										<button type="button" class="btn btn-secondary" style="background-color: #f54242" id="1-col-preset-btn-1">All red</button>
+										<button type="button" class="btn btn-secondary" style="background-color: #42f54b" id="1-col-preset-btn-2">All green</button>    
+										<button type="button" class="btn btn-secondary" style="background-color: #4b42f5" id="1-col-preset-btn-3">All blue</button>   
+										<button type="button" class="btn btn-secondary" style="background-color: #f5ef42"  id="1-col-preset-btn-4">All yellow</button>
+										<button type="button" class="btn btn-secondary" style="background-color: #42f5ef" id="1-col-preset-btn-5">All cyan</button>    
+										<button type="button" class="btn btn-secondary" style="background-color: #f542ec" id="1-col-preset-btn-6">All magenta</button>
+										<button type="button" class="btn btn-secondary" style="background-color: #f58a42" id="1-col-preset-btn-7">All orange</button>     
+										<button type="button" class="btn btn-secondary" style="background-color: #ffffff; color: black;" id="1-col-preset-btn-8">All white</button>  
 									</div>
 								</div>
 							</div>
@@ -37,12 +36,12 @@
 								</button>
 								<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 									<div class="btn-group-vertical" role="group">    
-										<button type="button" class="btn btn-secondary" style="background-color: yellow; border-color: purple; color: purple;">Yellow/Purple</button>
-										<button type="button" class="btn btn-secondary" style="background-color: black">Combo 2</button>
-										<button type="button" class="btn btn-secondary" style="background-color: black">Combo 3</button>
-										<button type="button" class="btn btn-secondary" style="background-color: black">Combo 4</button>
-										<button type="button" class="btn btn-secondary" style="background-color: black">Combo 5</button>
-										<button type="button" class="btn btn-secondary" style="background-color: black">Combo 6</button>
+										<button type="button" class="btn btn-secondary" style="background-color: yellow; border-color: purple; color: purple;" id="2-col-preset-btn-1">Yellow/Magenta</button>
+										<button type="button" class="btn btn-secondary" style="background-color: red; border-color: blue; color: blue;" id="2-col-preset-btn-2">Red/Blue</button>
+										<button type="button" class="btn btn-secondary" style="background-color: cyan; border-color: orange; color: orange;" id="2-col-preset-btn-3">Cyan/Yellow</button>
+										<button type="button" class="btn btn-secondary" style="background-color: green; border-color: blue; color: blue;" id="2-col-preset-btn-4">Green/Blue</button>
+										<button type="button" class="btn btn-secondary" style="background-color: magenta; border-color: white; color: white;" id="2-col-preset-btn-5">Magenta/White</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black; border-color: white; color: white;" id="2-col-preset-btn-6">White Window</button>
 									</div>
 								</div>
 							</div>
@@ -53,13 +52,17 @@
 								</button>
 								<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 									<div class="btn-group-vertical" role="group">   
-										<button type="button" class="btn btn-secondary" style="background-color: black">Green Scan</button>
-										<button type="button" class="btn btn-secondary" style="background-color: black">Multi-colour Scan</button>
-										<button type="button" class="btn btn-secondary" style="background-color: black">Police</button>
-										<button type="button" class="btn btn-secondary" style="background-color: black">Strobe</button>
-										<button type="button" class="btn btn-secondary" style="background-color: black">Rainbow</button>
-										<button type="button" class="btn btn-secondary" style="background-color: black">Fade Out</button>
-									</div>								</div>	
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-1">Green Scan</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-2">Multi-colour Scan</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-3">Police</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-4">Strobe</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-5">Rainbow</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-6">Gentle Pulsing</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-7">Hectic 1</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-8">Hectic 2</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-9">Fade Out</button>									
+									</div>								
+								</div>	
 							</div>		
 						</div>	
 		</div>
@@ -71,7 +74,7 @@
 		<div class="card-header">Flames</div>
 		<div class="card-body">
 			<div class="col text-center">
-				<button class="btn btn-outline-danger btn-block" id="fire-btgn">Fire!</button>
+				<button class="btn btn-outline-danger btn-block" id="fire-btn">Fire!</button>
 			</div>		
 		</div>
 	</div>
