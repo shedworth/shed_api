@@ -29,11 +29,11 @@ $.ajaxSetup({
     }
 });
 
-/*document.addEventListener('click', function(e) {
+document.addEventListener('click', function(e) {
 	if (document.activeElement.toString() == '[object HTMLButtonElement]') {
 		document.activeElement.blur();
 		}
-	});*/
+	});
 
 
 
@@ -317,6 +317,15 @@ $(document).ready(function(){
 
     	$(document).on("click", "#dyn-preset-btn-10", function () {
 		var data = {"preset": 'dyn_10'}
+		$.ajax({
+			type:				'POST',
+			url: 				'preset/',
+			data:			data
+		});    	
+    });  
+    
+     	$(document).on("click", "#dyn-preset-btn-11", function () {
+		var data = {"preset": 'dyn_11'}
 		$.ajax({
 			type:				'POST',
 			url: 				'preset/',

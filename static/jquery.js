@@ -323,4 +323,13 @@ $(document).ready(function(){
 			data:			data
 		});    	
     });  
+    
+     	$(document).on("click", "#dyn-preset-btn-11", function () {
+		var data = {"preset": 'dyn_11'}
+		$.ajax({
+			type:				'POST',
+			url: 				'preset/',
+			data:			data
+		});    	
+    });  
 })
