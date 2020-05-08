@@ -1,17 +1,73 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h1>Shed Control</h1>
+<h1>Shed Control</h1> 
 <br>
 <div class="container">
 	<div class="row">
-		<div class="col text-center">
+		<div class="col-8 md-col-3 xs-col-6 text-center">
 			<div class="card">
 				<div class="card-header">Preset Control</div>
 				<div class="card-body">
 					<div class="col text-center">
 					
-						<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+						<div class="d-none d-xl-block" role="group" aria-label="Button group">
+							<div class="btn-group" role="group">
+								<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 13em;">
+								Single Colour Presets
+								</button>
+								<div class="dropdown-menu btn-block" aria-labelledby="btnGroupDrop1">
+									<div class="btn-group-vertical btn-block" role="group" style="width: 13em;">    
+										<button type="button" class="btn btn-secondary" style="background-color: #f54242" id="1-col-preset-btn-1">All red</button>
+										<button type="button" class="btn btn-secondary" style="background-color: #42f54b" id="1-col-preset-btn-2">All green</button>    
+										<button type="button" class="btn btn-secondary" style="background-color: #4b42f5" id="1-col-preset-btn-3">All blue</button>   
+										<button type="button" class="btn btn-secondary" style="background-color: #f5ef42"  id="1-col-preset-btn-4">All yellow</button>
+										<button type="button" class="btn btn-secondary" style="background-color: #42f5ef" id="1-col-preset-btn-5">All cyan</button>    
+										<button type="button" class="btn btn-secondary" style="background-color: #f542ec" id="1-col-preset-btn-6">All magenta</button>
+										<button type="button" class="btn btn-secondary" style="background-color: #f58a42" id="1-col-preset-btn-7">All orange</button>     
+										<button type="button" class="btn btn-secondary" style="background-color: #ffffff; color: black;" id="1-col-preset-btn-8">All white</button>  
+									</div>
+								</div>
+							</div>
+							
+							<div class="btn-group" role="group">
+								<button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 13em;">
+								Dual Colour Presets
+								</button>
+								<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+									<div class="btn-group-vertical" role="group" style="width: 13em;">    
+										<button type="button" class="btn btn-secondary" style="background-color: yellow; border-color: purple; color: purple;" id="2-col-preset-btn-1">Yellow/Magenta</button>
+										<button type="button" class="btn btn-secondary" style="background-color: red; border-color: blue; color: blue;" id="2-col-preset-btn-2">Red/Blue</button>
+										<button type="button" class="btn btn-secondary" style="background-color: cyan; border-color: orange; color: orange;" id="2-col-preset-btn-3">Cyan/Yellow</button>
+										<button type="button" class="btn btn-secondary" style="background-color: green; border-color: blue; color: blue;" id="2-col-preset-btn-4">Green/Blue</button>
+										<button type="button" class="btn btn-secondary" style="background-color: magenta; border-color: white; color: white;" id="2-col-preset-btn-5">Magenta/White</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black; border-color: white; color: white;" id="2-col-preset-btn-6">White Window</button>
+									</div>
+								</div>
+							</div>
+							
+
+							<div class="btn-group" role="group">
+								<button id="btnGroupDrop3" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 13em;">
+								Dynamic Presets
+								</button>
+								<div class="dropdown-menu btn-block" aria-labelledby="btnGroupDrop1">
+									<div class="btn-group-vertical" role="group" style="width: 13em;">   
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-1">Green Scan</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-2">Multi-colour Scan</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-3">Police</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-4">Strobe</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-5">Rainbow</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-6">Gentle Pulsing</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-7">Hectic 1</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-8">Hectic 2</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-9">Hectic 3</button>
+										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-10">Fade Out</button>									
+									</div>								
+								</div>
+							</div>		
+						</div>	
+								<div class="btn-group-vertical d-xl-none btn-block" role="group" aria-label="Button group with nested dropdown">
 							<div class="btn-group" role="group">
 								<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle w-100" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Single Colour Presets
@@ -63,14 +119,14 @@
 										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-9">Hectic 3</button>
 										<button type="button" class="btn btn-secondary" style="background-color: black" id="dyn-preset-btn-10">Fade Out</button>									
 									</div>								
-								</div>	
+								</div>
 							</div>		
 						</div>	
 		</div>
 		</div>
 	</div>
 		</div>
-		<div class="col text-center">
+		<div class="col-4 md-col-3 xs-col-6 text-center">
 			<div class="card">
 		<div class="card-header">Flames</div>
 		<div class="card-body">
@@ -90,22 +146,21 @@
 		<form class='my-ajax-form' method="POST" action = '.' data_url='{{ request.build.absolute_uri|safe }}'>	
 		{% csrf_token %}
 		<div class="form-row">
-			<div class="form-group col-sm-2 mt-3"><h5>Left Wall</h5></div>	
-				<div class="form-group col-sm-3 mb-0" id="patternA">
+				<div class="form-group col-sm-5 mt-4" id="patternA">
 					{{ form.pattern_A|as_crispy_field }}
-				</div>			
-				<div class="form-group col-sm-1 mt-1 pt-4">
+				</div>
+				<div class="form-group col-auto  mt-0 pt-4">
 					<input name="colour_1_A" type="hidden" id="color_value_1_A" value={{ form.colour_1_A.initial }}>
 					<button class="jscolor {mode: 'HVS', valueElement: 'color_value_1_A'} btn btn-outline-light">Colour 1</button>
-				</div>		
-				<div class="form-group col-sm-1 mt-1 pt-4">
+				</div>
+				<div class="form-group col-auto mt-0 pt-4">
 					<input name="colour_2_A" type="hidden" id="color_value_2_A" value={{ form.colour_2_A.initial }}>
 					<button class="jscolor {mode: 'HVS', valueElement: 'color_value_2_A'} btn btn-outline-light">Colour 2</button>
 				</div>
-				<div class="form-group col-sm-5 mt-0">
+				<div class="form-group col mt-0 text-left">
 					<p>Rate</p>
 					<div class="d-flex justify-content-center mt-1">
-		  				<div class="w-75">
+		  				<div class="w-100">
 			 				<input name = "rate_A" type="range" class="custom-range" id="customRange11" value={{ form.rate_A.initial }} min="0" max="225">
 		  				</div>
 		  				<span class="font-weight-bold text-primary ml-2 valueSpan2"></span>
@@ -113,22 +168,21 @@
 				</div>		
 			</div>
 			<div class="form-row">
-				<div class="form-group col-sm-2 mt-3"><h5>Right Wall</h5></div>	
-					<div class="form-group col-sm-3 mb-0">
+					<div class="form-group col-sm-5 mt-4">
 						{{ form.pattern_B|as_crispy_field }}
 					</div>			
-					<div class="form-group col-sm-1 mt-1 pt-4">
+					<div class="form-group col-auto mt-0 pt-4">
 						<input name="colour_1_B" type="hidden" id="color_value_1_B" value={{ form.colour_1_B.initial }}>
 						<button class="jscolor {mode: 'HVS', valueElement: 'color_value_1_B'} btn btn-outline-light">Colour 1</button>
 					</div>		
-					<div class="form-group col-sm-1 mt-1 pt-4">
+					<div class="form-group col-auto mt-0 pt-4">
 						<input name="colour_2_B" type="hidden" id="color_value_2_B" value={{ form.colour_2_B.initial }}>
 						<button class="jscolor {mode: 'HVS', valueElement: 'color_value_2_B'} btn btn-outline-light">Colour 2</button>
 					</div>
-					<div class="form-group col-sm-5 mt-0">
+					<div class="form-group col mt-0">
 						<p>Rate</p>
 						<div class="d-flex justify-content-center mt-1">
-			  				<div class="w-75">
+			  				<div class="w-100">
 				 				<input name = "rate_B" type="range" class="custom-range" id="customRange12" value={{ form.rate_B.initial }} min="0" max="225">
 			  				</div>
 			  				<span class="font-weight-bold text-primary ml-2 valueSpan2"></span>
@@ -136,29 +190,28 @@
 					</div>		
 				</div>
 				<div class="form-row">
-					<div class="form-group col-sm-2 mt-3"><h5>Window</h5></div>	
-						<div class="form-group col-sm-3 mb-0">
+						<div class="form-group col-sm-5 mt-4">
 							{{ form.pattern_C|as_crispy_field }}
 						</div>		
-						<div class="form-group col-sm-1 mt-1 pt-4">
+						<div class="form-group col-auto mt-0 pt-4">
 							<input name="colour_1_C" type="hidden" id="color_value_1_C" value={{ form.colour_1_C.initial }}>
 							<button class="jscolor {mode: 'HVS', valueElement: 'color_value_1_C'} btn btn-outline-light">Colour 1</button>
 						</div>		
-						<div class="form-group col-sm-1 mt-1 pt-4">
+						<div class="form-group col-auto mt-0 pt-4">
 							<input name="colour_2_C" type="hidden" id="color_value_2_C" value={{ form.colour_2_C.initial }}>
 							<button class="jscolor {mode: 'HVS', valueElement: 'color_value_2_C'} btn btn-outline-light">Colour 2</button>
 						</div>	
-						<div class="form-group col-sm-5 mt-0">
+						<div class="form-group col mt-0">
 							<p>Rate</p>
 							<div class="d-flex justify-content-center mt-1">
-				  				<div class="w-75">
+				  				<div class="w-100">
 					 				<input name = "rate_C" type="range" class="custom-range" id="customRange13" value={{ form.rate_C.initial }} min="0" max="225">
 				  				</div>
 				  				<span class="font-weight-bold text-primary ml-2 valueSpan2"></span>
 							</div>			
 						</div>		
 					</div>
-					<button class="btn btn-outline-success" type="submit">Send To Shed</button>
+					<button class="btn btn-outline-success btn-block" type="submit">Send To Shed</button>
 				</form>
 			</div>
 			</div>

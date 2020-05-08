@@ -1,12 +1,13 @@
 from django import forms
+from crispy_forms.helper import FormHelper
 
 PATTERN_CHOICES = [
 	(1, 'Static (colour 1)'),
 	(2, 'Scan (colour 1)'),
 	(5, 'Sweep (colour 1)'),
-	(6, '2-Colour Flash (colour 1 & 2)'),
-	(4, '2-Colour Chase (colour 1 & 2)'),
-	(3, 'Rainbow (colours inactive)'),
+	(6, '2-colour flash (col 1 & 2)'),
+	(4, '2-colour chase (col 1 & 2)'),
+	(3, 'Rainbow (cols inactive)'),
 ]
 	
 class ControlForm(forms.Form):																				# Form for single fixture control
@@ -51,6 +52,12 @@ class ExtendedControlForm(forms.Form):														# Form with individual field
 	rate_C = forms.IntegerField(min_value=0, max_value=255, label="Rate")
 	
 class ColourPickerControlForm(forms.Form):											# Form for all fixtures with Javascript colour picker
+	
+	def __init__(self, *args, **kwargs):
+		super(ColourPickerControlForm, self).__init__(*args, **kwargs)
+		self.helper = FormHelper()
+		self.helper.form_show_labels = False
+		
 	pattern_A = forms.CharField(label="Pattern", widget=forms.Select(choices=PATTERN_CHOICES))
 	colour_1_A = forms.CharField(widget=forms.HiddenInput())
 	colour_2_A = forms.CharField(widget=forms.HiddenInput())

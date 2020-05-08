@@ -29,6 +29,13 @@ $.ajaxSetup({
     }
 });
 
+document.addEventListener('click', function(e) {
+	if (document.activeElement.toString() == '[object HTMLButtonElement]') {
+		document.activeElement.blur();
+		}
+	});
+
+
 
 $(document).ready(function(){
 	console.log("script running")    
