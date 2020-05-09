@@ -66,6 +66,7 @@ def send_to_shed(valid_response):
 								
 def control_shed(shed_params):
 	shed_move = ShedMove(shed_params)
+	print(shed_params)
 	shed_move.action()
 
 def fire():
@@ -74,7 +75,6 @@ def fire():
 		shedmove.action()
 		
 def run_preset(preset_no):
-	print(preset_no)
 	for fixture, params in ShedPresets.presets[preset_no].items():
 		shedmove = ShedMove(params)
 		shedmove.action()

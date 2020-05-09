@@ -66,7 +66,7 @@ def send_to_shed(valid_response):
 								
 def control_shed(shed_params):
 	shed_move = ShedMove(shed_params)
-	print(shed_params)
+	#print(shed_params)
 	shed_move.action()
 
 def fire():
