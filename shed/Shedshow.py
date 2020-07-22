@@ -4,8 +4,9 @@ from . import ShedPresets
 
 FLAMES_ACTIVE = True
 
-arduino = serial.Serial('/dev/ttyACM0', 19200, timeout=.5)
-    
+# arduino = serial.Serial('/dev/ttyACM0', 19200, timeout=.5)
+arduino = None  
+
 tempo = 100
 beat = int(tempo/3.7)
 tempBeat = (60.0/tempo)
@@ -97,7 +98,7 @@ class ShedMove(object):
         serialOut = (str(self.fixture) + str(self.pattern) + str(self.colour1) + str(self.colour2) + str(self.rate) + "\n")
 
 
-        arduino.write(str.encode(serialOut))
+        #arduino.write(str.encode(serialOut))
         
 def Colour(red, green, blue, white = 0):
     if white == 0 and red == 0 and green == 0 and blue ==0:
